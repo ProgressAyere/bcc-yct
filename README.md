@@ -61,8 +61,6 @@ bcc-website/
 │   ├── index.js                # Entry point
 │   ├── index.css               # Global styles with Tailwind
 │   └── reportWebVitals.js      # Performance monitoring
-├── compress-images.js          # Image compression utility
-├── convert-images.js           # HEIC to PNG converter
 ├── postcss.config.js           # PostCSS configuration
 ├── tailwind.config.js          # Tailwind CSS configuration
 ├── package.json                # Dependencies and scripts
@@ -186,23 +184,6 @@ npm start
 
 The application will open at `http://localhost:3000`
 
-## 🖼️ Image Utilities
-
-### Convert HEIC to PNG
-```bash
-node convert-images.js
-```
-Converts all HEIC images in the assets folder to PNG format.
-
-### Compress Images
-```bash
-node compress-images.js
-```
-Compresses images larger than 500KB while preserving maximum quality:
-- Resizes to max width 1920px
-- JPEG quality: 85%
-- PNG quality: 90%
-
 ## 🏗️ Build & Deployment
 
 ### Production Build
@@ -307,6 +288,6 @@ To all students, mentors, and partners who have contributed to making blockchain
 
 ---
 
-**Built with ❤️ by the BCC Team**
+**Built with ❤️ by Progress Ayere (Co-founder of BCC)**
 
 *Simplifying blockchain education for students*
