@@ -149,10 +149,6 @@ bcc-website/
 - **Lucide React** (v0.562.0) - Icon library
 - **FontAwesome** (v7.1.0) - Social media icons
 
-### Image Processing
-- **Sharp** (v0.34.5) - Image compression
-- **HEIC Convert** (v2.1.0) - HEIC to PNG conversion
-
 ### Development Tools
 - **PostCSS** (v8.5.6) - CSS processing
 - **Autoprefixer** (v10.4.23) - CSS vendor prefixing

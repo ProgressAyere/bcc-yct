@@ -32,8 +32,8 @@ const Community = () => {
   const milestones = [
     { date: 'September 2024', title: 'BCC Formation', description: 'Launched as a student-led blockchain education initiative at Yaba College of Technology' },
     { date: 'October 2024', title: 'First Physical Class', description: 'Hosted inaugural blockchain fundamentals workshop with 50+ students' },
-    { date: 'November 2024', title: 'Filecoin Partnership', description: 'Established collaboration with Filecoin for decentralized storage education' },
-    { date: 'December 2024', title: 'Web3UniLag Alliance', description: 'Formed strategic partnership with University of Lagos blockchain community' },
+    { date: 'September 2024', title: 'Filecoin Partnership', description: 'Established collaboration with Filecoin for decentralized storage education' },
+    { date: 'November 2024', title: 'Web3UniLag Alliance', description: 'Formed strategic partnership with University of Lagos blockchain community' },
     { date: 'January 2025', title: 'Monthly Calls Launch', description: 'Initiated monthly community calls featuring industry experts and open discussions' },
     { date: 'March 2025', title: 'Multi-Campus Expansion', description: 'Extended reach to Rivers State University and additional campus communities' },
     { date: 'June 2025', title: '500+ Students Milestone', description: 'Reached 500+ students trained across all programs and workshops' },
@@ -197,7 +197,7 @@ const Community = () => {
       </section>
 
       {/* Events & Highlights with Gallery */}
-      <section className="py-16 px-6 md:px-12 bg-white">
+      <section id="physical-classes" className="py-16 px-6 md:px-12 bg-white">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-dark text-center mb-12">Event Highlights & Gallery</h2>
           <div className="space-y-12">

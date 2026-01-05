@@ -1,11 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXTwitter, faWhatsapp, faTelegram, faInstagram } from '@fortawesome/free-brands-svg-icons';
 import logoLong from '../../assets/images/logo/logo-long.png';
 
 const Footer = () => {
-  const quickLinks = ['Home', 'About', 'What We Do', 'Partners', 'Join BCC'];
-  const communityLinks = ['Monthly Calls', 'Physical Classes', 'Trivia Games'];
+  const quickLinks = [
+    { name: 'Home', path: '/', type: 'route' },
+    { name: 'About', path: '/about', type: 'route' },
+    { name: 'What We Do', path: '/#what-we-do', type: 'anchor' },
+    { name: 'Partners', path: '/partners', type: 'route' },
+    { name: 'Join BCC', path: '/contact', type: 'route' }
+  ];
+  const communityLinks = [
+    { name: 'Monthly Calls', url: 'https://x.com/Bchain_YCTEpe/status/1725429075005599759?s=20', type: 'external' },
+    { name: 'Physical Classes', path: '/community#physical-classes', type: 'anchor' },
+    { name: 'Trivia Games', url: 'https://x.com/Bchain_YCTEpe/status/1785243614383104249?s=20', type: 'external' }
+  ];
   const socialLinks = [
     { name: 'X/Twitter', url: 'https://x.com/Bchain_YCTEpe', icon: faXTwitter },
     { name: 'WhatsApp', url: 'https://bit.ly/WaBCCYCTEpe', icon: faWhatsapp },
@@ -37,12 +48,22 @@ const Footer = () => {
             <ul className="space-y-2">
               {quickLinks.map((link, index) => (
                 <li key={index}>
-                  <a
-                    href={`#${link.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="text-sm hover:text-[#0FA958] transition-colors duration-300"
-                  >
-                    {link}
-                  </a>
+                  {link.type === 'anchor' ? (
+                    <a
+                      href={link.path}
+                      className="text-sm hover:text-[#0FA958] transition-colors duration-300"
+                    >
+                      {link.name}
+                    </a>
+                  ) : (
+                    <Link
+                      to={link.path}
+                      onClick={() => window.scrollTo(0, 0)}
+                      className="text-sm hover:text-[#0FA958] transition-colors duration-300"
+                    >
+                      {link.name}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -54,12 +75,23 @@ const Footer = () => {
             <ul className="space-y-2 mb-6">
               {communityLinks.map((link, index) => (
                 <li key={index}>
-                  <a
-                    href={`#${link.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="text-sm hover:text-[#0FA958] transition-colors duration-300"
-                  >
-                    {link}
-                  </a>
+                  {link.type === 'external' ? (
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm hover:text-[#0FA958] transition-colors duration-300"
+                    >
+                      {link.name}
+                    </a>
+                  ) : (
+                    <a
+                      href={link.path}
+                      className="text-sm hover:text-[#0FA958] transition-colors duration-300"
+                    >
+                      {link.name}
+                    </a>
+                  )}
                 </li>
               ))}
             </ul>
