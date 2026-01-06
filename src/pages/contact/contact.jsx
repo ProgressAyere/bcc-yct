@@ -16,7 +16,7 @@ const Contact = () => {
   const handleJoinSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('members')
         .insert([joinForm]);
       
@@ -33,7 +33,7 @@ const Contact = () => {
   const handleEnquirySubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data, error } = await supabase
+      const { error } = await supabase
         .from('enquiries')
         .insert([enquiryForm]);
       
