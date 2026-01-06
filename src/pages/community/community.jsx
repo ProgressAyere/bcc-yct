@@ -161,6 +161,16 @@ const Community = () => {
   }, [activities.length]);
 
   useEffect(() => {
+    const preventZoom = (e) => {
+      if (e.touches.length > 1) {
+        e.preventDefault();
+      }
+    };
+    document.addEventListener('touchmove', preventZoom, { passive: false });
+    return () => document.removeEventListener('touchmove', preventZoom);
+  }, []);
+
+  useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting && !showConfetti) {
