@@ -15,27 +15,28 @@ const Contact = () => {
   const handleJoinSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/api/members', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/members`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(joinForm)
       });
       const data = await response.json();
       if (response.ok) {
-        alert('Thank you for joining BCC! We\'ll be in touch soon.');
+        alert('Thank you for joining BCC! We will be in touch soon.');
         setJoinForm({ name: '', email: '', campus: '', interest: '' });
       } else {
         alert(data.message || 'Error joining BCC. Please try again.');
       }
     } catch (error) {
-      alert('Error connecting to server. Please try again later.');
+      console.error('Connection error:', error);
+      alert('Backend server is not running. Please start the server by running "npm start" in the back-end folder.');
     }
   };
 
   const handleEnquirySubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/api/enquiries', {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/enquiries`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(enquiryForm)
@@ -48,7 +49,8 @@ const Contact = () => {
         alert(data.message || 'Error submitting enquiry. Please try again.');
       }
     } catch (error) {
-      alert('Error connecting to server. Please try again later.');
+      console.error('Connection error:', error);
+      alert('Backend server is not running. Please start the server by running "npm start" in the back-end folder.');
     }
   };
 

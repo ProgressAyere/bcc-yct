@@ -8,8 +8,9 @@ exports.createEnquiry = async (req, res) => {
     const enquiry = new Enquiry({ name, email, subject, message });
     await enquiry.save();
 
-    await sendEnquiryConfirmation(enquiry);
-    await notifyAdmin('Enquiry', enquiry);
+    // Send emails without blocking the response
+    sendEnquiryConfirmation(enquiry).catch(err => console.log('Email error:', err.message));
+    notifyAdmin('Enquiry', enquiry).catch(err => console.log('Admin notification error:', err.message));
 
     res.status(201).json({ message: 'Enquiry submitted successfully!', enquiry });
   } catch (error) {

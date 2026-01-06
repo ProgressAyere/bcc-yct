@@ -13,8 +13,9 @@ exports.createMember = async (req, res) => {
     const member = new Member({ name, email, campus, interest });
     await member.save();
 
-    await sendWelcomeEmail(member);
-    await notifyAdmin('Member', member);
+    // Send emails without blocking the response
+    sendWelcomeEmail(member).catch(err => console.log('Email error:', err.message));
+    notifyAdmin('Member', member).catch(err => console.log('Admin notification error:', err.message));
 
     res.status(201).json({ message: 'Successfully joined BCC!', member });
   } catch (error) {

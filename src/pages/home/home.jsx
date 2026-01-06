@@ -47,21 +47,21 @@ const Home = () => {
   const team = [
     {
       name: 'Progress Ayere',
-      title: 'Co-founder & Frontend Developer',
+      title: 'Co-founder & Frontend Engineer',
       shortDesc: 'Leading educational initiatives and building user-focused web interfaces',
       fullDesc: 'Progress Ayere is a blockchain educator and community builder passionate about simplifying blockchain concepts for students. He is a co-founder of BlockChain on Campus (BCC), where he leads educational initiatives through physical classes, community sessions, and student engagement. He is also a frontend developer and currently serves as the Frontend Developer for Ghonsi Proof, building clean and user-focused web interfaces.',
       image: progressImg
     },
     {
       name: 'Eunice Apetu Olayemi',
-      title: 'Co-founder & Content Creator',
+      title: 'Co-founder & Communications Lead',
       shortDesc: 'Creating engaging Web3 content and hosting community spaces',
       fullDesc: 'Eunice Apetu is an educationist with a growing passion for Web3. She started her journey in late 2023 as a volunteer community manager, and since then, she has been exploring and learning more about the blockchain space. In 2024, she ventured into creating video contents in order to make Web3 education more engaging. By February 2025, she launched her personal brand, where she hosts monthly Twitter Spaces to share insights, connect with others, and keep the Web3 conversation going.',
       image: euniceImg
     },
     {
       name: 'Azeez Ajibola',
-      title: 'Co-founder & Community Moderator',
+      title: 'Co-founder & Head of Community',
       shortDesc: 'Building community connections and moderating engagement',
       fullDesc: 'Azeez Ajibola is the President of Leo\'s International and a community moderator. He brings strong leadership and community management skills to BCC, ensuring smooth operations and fostering meaningful connections within the blockchain education community.',
       image: jibolaImg
