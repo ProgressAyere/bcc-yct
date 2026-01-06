@@ -161,13 +161,15 @@ const Community = () => {
   }, [activities.length]);
 
   useEffect(() => {
-    const preventZoom = (e) => {
-      if (e.touches.length > 1) {
-        e.preventDefault();
+    const metaTag = document.querySelector('meta[name="viewport"]');
+    if (metaTag) {
+      metaTag.setAttribute('content', 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no');
+    }
+    return () => {
+      if (metaTag) {
+        metaTag.setAttribute('content', 'width=device-width, initial-scale=1.0');
       }
     };
-    document.addEventListener('touchmove', preventZoom, { passive: false });
-    return () => document.removeEventListener('touchmove', preventZoom);
   }, []);
 
   useEffect(() => {
