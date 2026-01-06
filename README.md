@@ -160,6 +160,11 @@ bcc-website/
 - **CORS** - Cross-origin resource sharing
 - **Dotenv** - Environment variable management
 
+### Alternative: Supabase (Serverless)
+- **Supabase** - PostgreSQL database with auto-generated REST API
+- **@supabase/supabase-js** - Supabase JavaScript client
+- No backend server required
+
 ## 📦 Installation
 
 ### Prerequisites
@@ -188,6 +193,8 @@ npm start
 The application will open at `http://localhost:3000`
 
 ### Backend Setup
+
+#### Option A: Node.js/Express/MongoDB Backend
 
 1. **Navigate to backend directory**
 ```bash
@@ -232,9 +239,36 @@ npm start
 
 The backend API will run at `http://localhost:5000`
 
+#### Option B: Supabase (Serverless - Recommended)
+
+1. **Create Supabase project**
+   - Go to https://supabase.com
+   - Create new project
+   - Run SQL to create tables (see `SUPABASE_SETUP.md`)
+
+2. **Install Supabase client**
+```bash
+npm install @supabase/supabase-js
+```
+
+3. **Add Supabase credentials to `.env`**
+```env
+REACT_APP_SUPABASE_URL=https://xxxxx.supabase.co
+REACT_APP_SUPABASE_ANON_KEY=eyJhbGc...
+```
+
+4. **Use Supabase version of contact page**
+```bash
+copy src\pages\contact\contact-supabase.jsx src\pages\contact\contact.jsx
+```
+
+**See `SUPABASE_SETUP.md` for detailed instructions**
+
 ## 🔌 Backend API
 
-### Architecture
+### Option A: Node.js/Express/MongoDB Backend
+
+#### Architecture
 
 The backend follows a modular MVC architecture:
 
@@ -256,7 +290,26 @@ back-end/
 └── package.json                 # Backend dependencies
 ```
 
-### API Endpoints
+### Option B: Supabase (Serverless)
+
+**Database Tables:**
+- `members` - Stores member registrations
+- `enquiries` - Stores contact form submissions
+
+**Features:**
+- Direct database connection from frontend
+- Auto-generated REST API
+- Built-in authentication ready
+- Real-time subscriptions available
+- Row Level Security (RLS) policies
+
+**Setup:** See `SUPABASE_SETUP.md`
+
+**View Data:** Supabase Dashboard → Table Editor
+
+---
+
+### API Endpoints (Node.js Backend)
 
 #### Health Check
 ```
@@ -425,7 +478,14 @@ Creates an optimized production build in the `build/` folder.
 
 ### Backend Deployment
 
-#### Railway
+#### Option A: Supabase (Recommended)
+- No deployment needed - database is already hosted
+- Just add environment variables to Vercel
+- See `SUPABASE_SETUP.md`
+
+#### Option B: Node.js Backend
+
+##### Railway
 1. Connect GitHub repository
 2. Add environment variables
 3. Deploy automatically on push
@@ -446,7 +506,12 @@ git push heroku main
 
 ### Database Deployment
 
-#### MongoDB Atlas (Recommended)
+#### Supabase (Recommended)
+- Already hosted when you create project
+- Free tier: 500MB database, 50K monthly active users
+- Access at https://supabase.com/dashboard
+
+#### MongoDB Atlas
 1. Create free cluster at [mongodb.com/cloud/atlas](https://www.mongodb.com/cloud/atlas)
 2. Whitelist IP addresses
 3. Create database user
@@ -484,9 +549,9 @@ The website is fully responsive across all devices:
 - Confetti effects on milestones
 
 ### Backend Features
-- RESTful API architecture
-- MongoDB database integration
-- Automated email notifications
+- RESTful API architecture (Node.js) OR Direct database access (Supabase)
+- MongoDB (Node.js) OR PostgreSQL (Supabase) database integration
+- Automated email notifications (Node.js only)
 - Form data validation
 - Duplicate prevention
 - Error handling and logging
@@ -514,12 +579,14 @@ reportWebVitals(console.log);
 ```
 
 ### Backend Monitoring
-- Health check endpoint for uptime monitoring
+- Health check endpoint for uptime monitoring (Node.js)
 - Console logging for requests and errors
-- MongoDB connection status tracking
+- Database connection status tracking
+- Supabase Dashboard for real-time monitoring (Supabase)
 
 ### Data Management
-- View members and enquiries via MongoDB Compass
+- **Node.js Backend:** View members and enquiries via MongoDB Compass
+- **Supabase:** View/edit data in Supabase Table Editor dashboard
 - Export data for analysis
 - Track registration trends
 - Monitor enquiry response times

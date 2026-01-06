@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXTwitter, faWhatsapp, faTelegram } from '@fortawesome/free-brands-svg-icons';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
+import { supabase } from '../../supabaseClient';
 
 const Contact = () => {
   const [joinForm, setJoinForm] = useState({ name: '', email: '', campus: '', interest: '' });
@@ -15,42 +16,34 @@ const Contact = () => {
   const handleJoinSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/members`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(joinForm)
-      });
-      const data = await response.json();
-      if (response.ok) {
-        alert('Thank you for joining BCC! We will be in touch soon.');
-        setJoinForm({ name: '', email: '', campus: '', interest: '' });
-      } else {
-        alert(data.message || 'Error joining BCC. Please try again.');
-      }
+      const { data, error } = await supabase
+        .from('members')
+        .insert([joinForm]);
+      
+      if (error) throw error;
+      
+      alert('Thank you for joining BCC! We will be in touch soon.');
+      setJoinForm({ name: '', email: '', campus: '', interest: '' });
     } catch (error) {
-      console.error('Connection error:', error);
-      alert('Backend server is not running. Please start the server by running "npm start" in the back-end folder.');
+      console.error('Error:', error);
+      alert(error.message || 'Error joining BCC. Please try again.');
     }
   };
 
   const handleEnquirySubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/api/enquiries`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(enquiryForm)
-      });
-      const data = await response.json();
-      if (response.ok) {
-        alert('Thank you for reaching out! We\'ll respond to your enquiry shortly.');
-        setEnquiryForm({ name: '', email: '', subject: '', message: '' });
-      } else {
-        alert(data.message || 'Error submitting enquiry. Please try again.');
-      }
+      const { data, error } = await supabase
+        .from('enquiries')
+        .insert([enquiryForm]);
+      
+      if (error) throw error;
+      
+      alert('Thank you for reaching out! We\'ll respond to your enquiry shortly.');
+      setEnquiryForm({ name: '', email: '', subject: '', message: '' });
     } catch (error) {
-      console.error('Connection error:', error);
-      alert('Backend server is not running. Please start the server by running "npm start" in the back-end folder.');
+      console.error('Error:', error);
+      alert(error.message || 'Error submitting enquiry. Please try again.');
     }
   };
 
