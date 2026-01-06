@@ -1,5 +1,6 @@
 import React from 'react';
 import { Users, Calendar, TrendingUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import filecoinImg from '../../assets/images/partnerships/bcc-filecoin.jpg';
@@ -115,9 +116,9 @@ const Partners = () => {
       <section className="py-16 px-6 md:px-12 bg-lightGrey">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-dark text-center mb-12">Our Strategic Partners</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 group">
             {partners.map((partner, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md hover:shadow-xl transition overflow-hidden">
+              <div key={index} className="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group-hover:opacity-50 hover:!opacity-100 hover:scale-105">
                 {partner.image && (
                   <div className="w-full h-48 overflow-hidden">
                     <img 
@@ -174,9 +175,11 @@ const Partners = () => {
           <p className="text-lg mb-8">
             We're always looking to collaborate with organizations and communities that share our vision of accessible blockchain education.
           </p>
-          <button className="bg-accent hover:bg-yellow-500 text-dark font-bold px-10 py-4 rounded-lg text-lg transition shadow-lg">
-            Get in Touch
-          </button>
+          <Link to="/contact" onClick={() => window.scrollTo(0, 0)}>
+            <button className="bg-accent hover:bg-yellow-500 text-dark font-bold px-10 py-4 rounded-lg text-lg transition shadow-lg">
+              Get in Touch
+            </button>
+          </Link>
         </div>
       </section>
 

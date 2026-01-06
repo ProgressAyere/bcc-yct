@@ -20,7 +20,7 @@ const Footer = () => {
   const socialLinks = [
     { name: 'X/Twitter', url: 'https://x.com/Bchain_YCTEpe', icon: faXTwitter },
     { name: 'WhatsApp', url: 'https://bit.ly/WaBCCYCTEpe', icon: faWhatsapp },
-    { name: 'Telegram', url: 'https://t.me/Bchain_YCTEpe', icon: faTelegram },
+    { name: 'Telegram', url: 'https://t.me/BCC_YCTEpe', icon: faTelegram },
     { name: 'Instagram', url: 'https://www.instagram.com/bchain_yctepe/', icon: faInstagram }
   ];
 

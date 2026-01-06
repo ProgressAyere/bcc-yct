@@ -246,7 +246,7 @@ const Contact = () => {
               <span className="font-semibold">Join WhatsApp</span>
             </a>
             <a
-              href="https://t.me/Bchain_YCTEpe"
+              href="https://t.me/BCC_YCTEpe"
               className="bg-white/10 hover:bg-white/20 backdrop-blur-sm px-8 py-4 rounded-lg transition flex items-center gap-3"
             >
               <FontAwesomeIcon icon={faTelegram} className="text-2xl" />

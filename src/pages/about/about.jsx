@@ -1,15 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { MapPin, GraduationCap, Globe } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 
 const About = () => {
+  const [currentJourney, setCurrentJourney] = useState(0);
   const journeySteps = [
     { title: 'Formation', description: 'Established as a student-led initiative to democratize blockchain education' },
     { title: 'Growth', description: 'Expanded programs and community reach across campus networks' },
     { title: 'Recognition', description: 'Gained acknowledgment as a leading campus blockchain community' },
     { title: 'Partnerships', description: 'Collaborated with industry leaders to enhance learning opportunities' }
   ];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentJourney((prev) => (prev + 1) % journeySteps.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [journeySteps.length]);
+
+  const handleJourneyClick = () => {
+    setCurrentJourney((prev) => (prev + 1) % journeySteps.length);
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -69,18 +82,20 @@ const About = () => {
       <section className="py-16 px-6 md:px-12 bg-white">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-dark mb-12 text-center">Our Journey</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {journeySteps.map((step, index) => (
-              <div key={index} className="relative">
-                <div className="bg-lightGrey p-6 rounded-lg hover:shadow-lg transition-shadow">
-                  <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center mb-4 mx-auto">
-                    <span className="text-dark text-xl font-bold">{index + 1}</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-secondary mb-3 text-center">{step.title}</h3>
-                  <p className="text-dark text-sm leading-relaxed text-center">{step.description}</p>
-                </div>
+          <div className="flex justify-center items-center min-h-[250px]">
+            <div 
+              onClick={handleJourneyClick}
+              className="bg-lightGrey p-8 rounded-lg shadow-[0_10px_40px_rgba(15,169,88,0.3)] hover:shadow-[0_15px_50px_rgba(17,145,70,1)] transition-all duration-500 max-w-md w-full cursor-pointer"
+            >
+              <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center mb-4 mx-auto">
+                <span className="text-dark text-xl font-bold">{currentJourney + 1}</span>
               </div>
-            ))}
+              <h3 className="text-xl font-bold text-secondary mb-3 text-center">{journeySteps[currentJourney].title}</h3>
+              <p className="text-dark text-sm leading-relaxed text-center">{journeySteps[currentJourney].description}</p>
+              <div className="text-center mt-4 text-sm text-gray-500">
+                {currentJourney + 1} / {journeySteps.length}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -112,9 +127,11 @@ const About = () => {
           <p className="text-lg mb-8">
             Be part of a growing network of students learning and building in the blockchain space.
           </p>
-          <button className="bg-accent hover:bg-yellow-500 text-dark font-bold px-10 py-4 rounded-lg text-lg transition shadow-lg">
-            Get Started with BCC
-          </button>
+          <Link to="/contact" onClick={() => window.scrollTo(0, 0)}>
+            <button className="bg-accent hover:bg-yellow-500 text-dark font-bold px-10 py-4 rounded-lg text-lg transition shadow-lg">
+              Get Started with BCC
+            </button>
+          </Link>
         </div>
       </section>
 

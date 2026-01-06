@@ -1,5 +1,6 @@
 import React from 'react';
 import { BookOpen, Lightbulb, Users, Shield, Sparkles } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
 import missionImage from '../../assets/images/mission-image.png';
@@ -82,9 +83,11 @@ const Mission = () => {
           <p className="text-lg mb-8">
             Be part of a community committed to ethical blockchain education and digital empowerment.
           </p>
-          <button className="bg-accent hover:bg-yellow-500 text-dark font-bold px-10 py-4 rounded-lg text-lg transition shadow-lg">
-            Get Involved
-          </button>
+          <Link to="/contact" onClick={() => window.scrollTo(0, 0)}>
+            <button className="bg-accent hover:bg-yellow-500 text-dark font-bold px-10 py-4 rounded-lg text-lg transition shadow-lg">
+              Get Involved
+            </button>
+          </Link>
         </div>
       </section>
 
