@@ -10,6 +10,9 @@ import rsuLogo from '../../assets/images/logo/rsu-logo.png';
 import btbLogo from '../../assets/images/logo/btb-logo.png';
 import stellarLogo from '../../assets/images/logo/stellar-logo.png';
 import heroImage from '../../assets/images/classes/class2.jpg';
+import progressImg from '../../assets/images/team/progress.png';
+import euniceImg from '../../assets/images/team/eunice.jpeg';
+import jibolaImg from '../../assets/images/team/jibola.jpg';
 
 const Home = () => {
   const [zoomedLogo, setZoomedLogo] = useState(null);
@@ -39,6 +42,30 @@ const Home = () => {
     { value: '7', label: 'Partnerships Formed' },
     { value: '25+', label: 'Events Hosted' },
     { value: '1', label: 'Years of Impact' }
+  ];
+
+  const team = [
+    {
+      name: 'Progress Ayere',
+      title: 'Co-founder & Frontend Developer',
+      shortDesc: 'Leading educational initiatives and building user-focused web interfaces',
+      fullDesc: 'Progress Ayere is a blockchain educator and community builder passionate about simplifying blockchain concepts for students. He is a co-founder of BlockChain on Campus (BCC), where he leads educational initiatives through physical classes, community sessions, and student engagement. He is also a frontend developer and currently serves as the Frontend Developer for Ghonsi Proof, building clean and user-focused web interfaces.',
+      image: progressImg
+    },
+    {
+      name: 'Eunice Apetu Olayemi',
+      title: 'Co-founder & Content Creator',
+      shortDesc: 'Creating engaging Web3 content and hosting community spaces',
+      fullDesc: 'Eunice Apetu is an educationist with a growing passion for Web3. She started her journey in late 2023 as a volunteer community manager, and since then, she has been exploring and learning more about the blockchain space. In 2024, she ventured into creating video contents in order to make Web3 education more engaging. By February 2025, she launched her personal brand, where she hosts monthly Twitter Spaces to share insights, connect with others, and keep the Web3 conversation going.',
+      image: euniceImg
+    },
+    {
+      name: 'Azeez Ajibola',
+      title: 'Co-founder & Community Moderator',
+      shortDesc: 'Building community connections and moderating engagement',
+      fullDesc: 'Azeez Ajibola is the President of Leo\'s International and a community moderator. He brings strong leadership and community management skills to BCC, ensuring smooth operations and fostering meaningful connections within the blockchain education community.',
+      image: jibolaImg
+    }
   ];
 
   useEffect(() => {
@@ -118,6 +145,38 @@ const Home = () => {
                 {currentCard + 1} / {whatWeDoCards.length}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Meet the Team Section */}
+      <section className="py-16 px-6 md:px-12 bg-lightGrey">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-3">Meet the Team</h2>
+            <p className="text-lg text-dark">The people leading blockchain education on campus.</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {team.map((member, index) => (
+              <div 
+                key={index}
+                className="bg-white rounded-xl overflow-hidden shadow-[0_4px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all duration-300 hover:-translate-y-1 group"
+              >
+                <div className="overflow-hidden h-80">
+                  <img 
+                    src={member.image} 
+                    alt={member.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-dark mb-2">{member.name}</h3>
+                  <p className="text-primary font-semibold mb-3">{member.title}</p>
+                  <p className="text-dark text-sm leading-relaxed group-hover:hidden">{member.shortDesc}</p>
+                  <p className="text-dark text-sm leading-relaxed hidden group-hover:block">{member.fullDesc}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

@@ -12,18 +12,44 @@ const Contact = () => {
   const interests = ['Blockchain Fundamentals', 'Smart Contracts', 'DeFi', 'NFTs', 'Web3 Development', 'Community Building'];
   const enquiryTypes = ['Partnership Opportunity', 'Event Collaboration', 'Media Enquiry', 'General Question'];
 
-  const handleJoinSubmit = (e) => {
+  const handleJoinSubmit = async (e) => {
     e.preventDefault();
-    console.log('Join Form:', joinForm);
-    alert('Thank you for joining BCC! We\'ll be in touch soon.');
-    setJoinForm({ name: '', email: '', campus: '', interest: '' });
+    try {
+      const response = await fetch('http://localhost:5000/api/members', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(joinForm)
+      });
+      const data = await response.json();
+      if (response.ok) {
+        alert('Thank you for joining BCC! We\'ll be in touch soon.');
+        setJoinForm({ name: '', email: '', campus: '', interest: '' });
+      } else {
+        alert(data.message || 'Error joining BCC. Please try again.');
+      }
+    } catch (error) {
+      alert('Error connecting to server. Please try again later.');
+    }
   };
 
-  const handleEnquirySubmit = (e) => {
+  const handleEnquirySubmit = async (e) => {
     e.preventDefault();
-    console.log('Enquiry Form:', enquiryForm);
-    alert('Thank you for reaching out! We\'ll respond to your enquiry shortly.');
-    setEnquiryForm({ name: '', email: '', subject: '', message: '' });
+    try {
+      const response = await fetch('http://localhost:5000/api/enquiries', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(enquiryForm)
+      });
+      const data = await response.json();
+      if (response.ok) {
+        alert('Thank you for reaching out! We\'ll respond to your enquiry shortly.');
+        setEnquiryForm({ name: '', email: '', subject: '', message: '' });
+      } else {
+        alert(data.message || 'Error submitting enquiry. Please try again.');
+      }
+    } catch (error) {
+      alert('Error connecting to server. Please try again later.');
+    }
   };
 
   return (

@@ -355,7 +355,7 @@ const Community = () => {
                 </div>
                 
                 {highlight.useSlider ? (
-                  <div className="relative h-96 perspective-1000">
+                  <div className="relative h-[500px] md:h-[600px] perspective-1000 overflow-hidden">
                     <div 
                       className="relative w-full h-full"
                       onTouchStart={handleTouchStart}
@@ -374,7 +374,7 @@ const Community = () => {
                         let zIndex = 0;
                         
                         if (isCenter) {
-                          transform = 'translateX(-50%) translateZ(0px) rotateY(0deg) scale(1.1)';
+                          transform = 'translateX(-50%) translateZ(0px) rotateY(0deg) scale(1)';
                           opacity = 1;
                           zIndex = 3;
                         } else if (isLeft) {
@@ -390,7 +390,7 @@ const Community = () => {
                         return (
                           <div
                             key={imgIndex}
-                            className="absolute left-1/2 top-1/2 -translate-y-1/2 w-80 h-80 transition-all duration-500 ease-out cursor-pointer"
+                            className="absolute left-1/2 top-1/2 -translate-y-1/2 w-80 h-80 md:w-96 md:h-96 transition-all duration-500 ease-out cursor-pointer"
                             style={{
                               transform,
                               opacity,
